@@ -1,6 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:portfolio/media_query.dart';
 import 'package:portfolio/pages/home/components/carousel.dart';
 import 'package:portfolio/pages/home/components/cv_section.dart';
 import 'package:portfolio/pages/home/components/education_section.dart';
@@ -17,6 +18,9 @@ import 'package:portfolio/utils/globals.dart';
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var gapSize = SizedBox(
+      height: MediaQuerypage.screenHeight! * .02,
+    );
     return Scaffold(
       key: Globals.scaffoldKey,
       // endDrawer: Drawer(
@@ -74,35 +78,21 @@ class Home extends StatelessWidget {
           children: [
             Header(),
             Carousel(),
-            SizedBox(
-              height: 20.0,
-            ),
+            gapSize,
             CvSection(),
-            IosAppAd(),
-            SizedBox(
-              height: 70.0,
-            ),
-            WebsiteAd(),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 28.0),
-              child: PortfolioStats(),
-            ),
-            SizedBox(
-              height: 50.0,
-            ),
+            // IosAppAd(),
+            gapSize,
+            // WebsiteAd(),
+            SkillSection(),
+            gapSize,
             EducationSection(),
             SizedBox(
-              height: 50.0,
+              height: MediaQuerypage.screenHeight! * .1,
             ),
-            SkillSection(),
-            SizedBox(
-              height: 50.0,
-            ),
-            Sponsors(),
-            SizedBox(
-              height: 50.0,
-            ),
-            TestimonialWidget(),
+            gapSize,
+            // Sponsors(),
+            gapSize,
+            // TestimonialWidget(),
             Footer(),
           ],
         ),

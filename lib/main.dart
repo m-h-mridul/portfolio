@@ -1,9 +1,10 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:portfolio/pages/home/home.dart';
 import 'package:portfolio/utils/constants.dart';
-
 import 'media_query.dart';
 
 void main() {
@@ -15,7 +16,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     MediaQuerypage.init(context);
     return MaterialApp(
-      title: "Flutter Portfolio",
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.dark,
       darkTheme: Theme.of(context).copyWith(

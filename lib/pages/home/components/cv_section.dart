@@ -1,9 +1,13 @@
+// ignore_for_file: avoid_web_libraries_in_flutter
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio/media_query.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:portfolio/models/design_process.dart';
 import 'package:portfolio/utils/constants.dart';
 import 'package:portfolio/utils/screen_helper.dart';
+import 'dart:js' as js;
 
 final List<DesignProcess> designProcesses = [
   DesignProcess(
@@ -35,7 +39,7 @@ final List<DesignProcess> designProcesses = [
 class CvSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       child: ScreenHelper(
         desktop: _buildUi(context, kDesktopMaxWidth),
@@ -47,42 +51,14 @@ class CvSection extends StatelessWidget {
 
   Widget _buildUi(BuildContext context, double width) {
     // we need the context to get maxWidth before the constraints below
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              "BETTER DESIGN,\nBETTER EXPERIENCES",
-              style: GoogleFonts.oswald(
-                color: Colors.white,
-                fontWeight: FontWeight.w900,
-                height: 1.8,
-                fontSize: 18.0,
-              ),
-            ),
-            GestureDetector(
-              onTap: () {},
-              child: MouseRegion(
-                cursor: SystemMouseCursors.click,
-                child: Text(
-                  "DOWNLOAD CV",
-                  style: GoogleFonts.oswald(
-                    color: kPrimaryColor,
-                    fontWeight: FontWeight.w900,
-                    fontSize: 16.0,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-        SizedBox(
-          height: 50.0,
-        ),
-        Container(
-          child: LayoutBuilder(
+    return Padding(
+      padding: EdgeInsets.symmetric(
+          horizontal: MediaQuerypage.safeBlockHorizontal! * 4,
+          vertical: MediaQuerypage.safeBlockVertical! * 2),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          LayoutBuilder(
             builder: (_context, constraints) {
               return ResponsiveGridView.builder(
                 padding: EdgeInsets.all(0.0),
@@ -144,9 +120,9 @@ class CvSection extends StatelessWidget {
                 itemCount: designProcesses.length,
               );
             },
-          ),
-        )
-      ],
+          )
+        ],
+      ),
     );
   }
 }

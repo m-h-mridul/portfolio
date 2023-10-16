@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors
+// ignore_for_file: use_key_in_widget_constructors, avoid_web_libraries_in_flutter
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,20 +6,40 @@ import 'package:portfolio/models/header_item.dart';
 import 'package:portfolio/utils/constants.dart';
 import 'package:portfolio/utils/globals.dart';
 import 'package:portfolio/utils/screen_helper.dart';
+import 'dart:js' as js;
 
 List<HeaderItem> headerItems = [
   HeaderItem(
-    title: "HOME",
-    onTap: () {},
-  ),
-  HeaderItem(title: "MY INTRO", onTap: () {}),
-  HeaderItem(title: "SERVICES", onTap: () {}),
-  HeaderItem(title: "PORTFOLIO", onTap: () {}),
-  HeaderItem(title: "TESTIMONIALS", onTap: () {}),
-  HeaderItem(title: "BLOGS", onTap: () {}),
+      title: "Facebook",
+      onTap: () {
+        const String url =
+            'https://www.facebook.com/profile.php?id=100003522036510&mibextid=ZbWKwL';
+        js.context.callMethod('open', [url]);
+      }),
+  HeaderItem(
+      title: "Github",
+      onTap: () {
+        const String url = 'https://github.com/m-h-mridul';
+        js.context.callMethod('open', [url]);
+      }),
+  HeaderItem(
+      title: "Link-in",
+      onTap: () {
+        const String url = 'https://www.linkedin.com/in/mhamudul-hasan-mridul';
+        js.context.callMethod('open', [url]);
+      }),
+  HeaderItem(
+      title: "BLOGS",
+      onTap: () {
+        const String url = 'https://medium.com/@mhmridul2400';
+        js.context.callMethod('open', [url]);
+      }),
   HeaderItem(
     title: "HIRE ME",
-    onTap: () {},
+    onTap: () {
+      const String url = 'https://medium.com/@mhmridul2400';
+      js.context.callMethod('open', [url]);
+    },
     isButton: true,
   ),
 ];
@@ -29,29 +49,26 @@ class HeaderLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
-      child: GestureDetector(
-        onTap: () {},
-        child: RichText(
-          text: TextSpan(
-            children: [
-              TextSpan(
-                text: "Mridul",
-                style: GoogleFonts.oswald(
-                  color: Colors.white,
-                  fontSize: 32.0,
-                  fontWeight: FontWeight.bold,
-                ),
+      child: RichText(
+        text: TextSpan(
+          children: [
+            TextSpan(
+              text: "Mridul",
+              style: GoogleFonts.oswald(
+                color: Colors.white,
+                fontSize: 32.0,
+                fontWeight: FontWeight.bold,
               ),
-              TextSpan(
-                text: ".",
-                style: GoogleFonts.oswald(
-                  color: kPrimaryColor,
-                  fontSize: 36.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              )
-            ],
-          ),
+            ),
+            TextSpan(
+              text: ".",
+              style: GoogleFonts.oswald(
+                color: kPrimaryColor,
+                fontSize: 36.0,
+                fontWeight: FontWeight.bold,
+              ),
+            )
+          ],
         ),
       ),
     );
