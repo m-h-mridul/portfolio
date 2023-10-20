@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/media_query.dart';
@@ -7,20 +9,30 @@ import 'package:portfolio/utils/screen_helper.dart';
 
 List<Skill> skills = [
   Skill(
-    skill: "Dart/Python",
-    percentage: 80,
+    skill: "Application Development Skills",
+    details:
+        '''Language:- C, C++, Python, Java, Dart. Framework: Flutter, Android (JAVA)
+Backend - Nodejs. Database:- Firebase, MongoDB.''',
   ),
   Skill(
-    skill: "C/C++",
-    percentage: 70,
+    skill: "Dev Ops Skills",
+    details:
+        '''Operating Systems: Linux (Ubuntu, CentOS), Windows Scripting Languages: Bash, Python
+Source Code Management: Git, GitHub
+Web Servers: Nginx, Apache
+Containerisation and Orchestration: Docker, Kubernetes (CI/CD) tools: Jenkins, Travis CI
+Databases: MySQL, PostgreSQL
+Configuration Management: Ansible
+Cloud Platforms: AWS, Google Cloud
+Infrastructure as Code (IaC): Terraform, CloudFormation 
+Monitoring and Logging: Prometheus, Grafana, ELK Stack Version 
+Control: Git.
+Collaboration Tools: Slack, Jira, Confluence''',
   ),
   Skill(
-    skill: "Javascript",
-    percentage: 60,
-  ),
-  Skill(
-    skill: "GoLang",
-    percentage: 40,
+    skill: "Problem-solving",
+    details:
+        '''Algorithm and Data Structure, Competitive programmer.\nUsing Phython''',
   ),
 ];
 
@@ -65,17 +77,6 @@ class SkillSection extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(
-                      height: 10.0,
-                    ),
-                    const Text(
-                      "This is all the skills listed below more will be added in due time.",
-                      style: TextStyle(
-                        color: kCaptionColor,
-                        height: 1.5,
-                        fontSize: 16.0,
-                      ),
-                    ),
-                    const SizedBox(
                       height: 15.0,
                     ),
                     Column(
@@ -85,35 +86,26 @@ class SkillSection extends StatelessWidget {
                               margin: const EdgeInsets.only(bottom: 15.0),
                               child: Row(
                                 children: [
-                                  Expanded(
-                                    flex: skill.percentage,
-                                    child: Container(
-                                      padding:
-                                          const EdgeInsets.only(left: 10.0),
-                                      alignment: Alignment.centerLeft,
-                                      height: 38.0,
-                                      color: Colors.white,
-                                      child: Text(skill.skill),
+                                  SizedBox(
+                                    width: MediaQuerypage.screenWidth! * .22,
+                                    child: Text(
+                                      skill.skill,
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16.0,
+                                      ),
                                     ),
                                   ),
                                   const SizedBox(
                                     width: 10.0,
                                   ),
                                   Expanded(
-                                    // remaining (blank part)
-                                    flex: 100 - skill.percentage,
-                                    child: const Divider(
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 10.0,
-                                  ),
-                                  Text(
-                                    "${skill.percentage}%",
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 16.0,
+                                    child: Text(
+                                      skill.details,
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16.0,
+                                      ),
                                     ),
                                   )
                                 ],

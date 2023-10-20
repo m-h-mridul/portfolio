@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, avoid_web_libraries_in_flutter
+// ignore_for_file: use_key_in_widget_constructors, avoid_web_libraries_in_flutter, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -29,11 +29,13 @@ List<HeaderItem> headerItems = [
         js.context.callMethod('open', [url]);
       }),
   HeaderItem(
-      title: "BLOGS",
-      onTap: () {
-        const String url = 'https://medium.com/@mhmridul2400';
-        js.context.callMethod('open', [url]);
-      }),
+    title: "BLOGS",
+    onTap: () {
+      const String url = 'https://medium.com/@mhmridul2400';
+      js.context.callMethod('open', [url]);
+    },
+    
+  ),
   HeaderItem(
     title: "HIRE ME",
     onTap: () {
@@ -149,15 +151,12 @@ class Header extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             HeaderLogo(),
-            // Restart server to make icons work
-            // Lets make a scaffold key and create a drawer
             GestureDetector(
               onTap: () {
-                // Lets open drawer using global key
                 Globals.scaffoldKey.currentState!.openEndDrawer();
               },
               child: const Icon(
-                Icons.abc_outlined,
+                Icons.list,
                 color: Colors.white,
                 size: 28.0,
               ),

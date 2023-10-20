@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/media_query.dart';
@@ -88,24 +90,26 @@ Widget _buildUi(double width, BuildContext context) {
                             SizedBox(
                               height: 15.0,
                             ),
-                            RichText(
-                              textAlign: TextAlign.start,
-                              text: TextSpan(
-                                children: [
-                                  TextSpan(
-                                    text: "${footerItem.text1}\n",
-                                    style: TextStyle(
-                                      color: kCaptionColor,
-                                      height: 1.8,
+                            Expanded(
+                              child: RichText(
+                                textAlign: TextAlign.start,
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: "${footerItem.text1}\n",
+                                      style: TextStyle(
+                                        color: kCaptionColor,
+                                        height: 1.8,
+                                      ),
                                     ),
-                                  ),
-                                  TextSpan(
-                                    text: "${footerItem.text2}\n",
-                                    style: TextStyle(
-                                      color: kCaptionColor,
-                                    ),
-                                  )
-                                ],
+                                    TextSpan(
+                                      text: "${footerItem.text2}\n",
+                                      style: TextStyle(
+                                        color: kCaptionColor,
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                             )
                           ],

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, avoid_web_libraries_in_flutter
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/media_query.dart';
@@ -32,7 +34,7 @@ List<CarouselItemModel> carouselItems = List.generate(
             "Mamudul Hasan Mridul",
             style: GoogleFonts.oswald(
               color: Colors.white,
-              fontSize: 40.0,
+              fontSize: 30.0,
               fontWeight: FontWeight.w900,
               height: 1.3,
             ),
@@ -61,23 +63,60 @@ List<CarouselItemModel> carouselItems = List.generate(
             ),
           ),
           GestureDetector(
-              onTap: () {
-                const String url =
-                    'https://drive.google.com/drive/folders/16tAzHNT3M6TGx_ouJyg6w_1Li79NBFk1?usp=sharing';
-                js.context.callMethod('open', [url]);
-              },
-              child: MouseRegion(
-                cursor: SystemMouseCursors.click,
-                child: Text(
-                  "DOWNLOAD CV",
-                  style: GoogleFonts.oswald(
-                    color: kPrimaryColor,
-                    fontWeight: FontWeight.w900,
-                    fontSize: 16.0,
-                  ),
+            onTap: () {
+              const String url =
+                  'https://drive.google.com/drive/folders/16tAzHNT3M6TGx_ouJyg6w_1Li79NBFk1?usp=sharing';
+              js.context.callMethod('open', [url]);
+            },
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: Text(
+                "DOWNLOAD CV",
+                style: GoogleFonts.oswald(
+                  color: kPrimaryColor,
+                  fontWeight: FontWeight.w900,
+                  fontSize: 16.0,
                 ),
               ),
             ),
+          ),
+          Wrap(
+            children: [
+              TextButton(
+                  onPressed: () {
+                    String url = 'https://uhunt.onlinejudge.org/id/936857';
+                    js.context.callMethod('open', [url]);
+                  },
+                  child: Text(
+                    'UVA',
+                    style: TextStyle(
+                      fontSize: 20.0,
+                    ),
+                  )),
+              TextButton(
+                  onPressed: () {
+                    String url = 'https://www.hackerrank.com/profile/mmridul';
+                    js.context.callMethod('open', [url]);
+                  },
+                  child: Text(
+                    'Heaker Rank',
+                    style: TextStyle(
+                      fontSize: 20.0,
+                    ),
+                  )),
+              TextButton(
+                  onPressed: () {
+                    String url = 'https://leetcode.com/Mridul1155/';
+                    js.context.callMethod('open', [url]);
+                  },
+                  child: Text(
+                    'Leet Code',
+                    style: TextStyle(
+                      fontSize: 20.0,
+                    ),
+                  )),
+            ],
+          ),
         ],
       ),
     ),

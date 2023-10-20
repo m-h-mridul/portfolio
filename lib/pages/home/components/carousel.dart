@@ -112,9 +112,9 @@ Widget _buildTablet(BuildContext context, Widget text, Widget image) {
 
 Widget _buildMobile(BuildContext context, Widget text, Widget image) {
   return Container(
-    constraints: BoxConstraints(
-      maxWidth: getMobileMaxWidth(context),
-    ),
+    // constraints: BoxConstraints(
+    //   maxWidth: getMobileMaxWidth(context),
+    // ),
     width: double.infinity,
     child: text,
   );
