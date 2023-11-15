@@ -1,14 +1,13 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, avoid_web_libraries_in_flutter, camel_case_types, unused_import
+// ignore_for_file: use_key_in_widget_constructors, avoid_web_libraries_in_flutter
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/media_query.dart';
-import 'package:portfolio/utils/constants.dart';
-import 'package:portfolio/utils/screen_helper.dart';
 import 'dart:js' as js;
-import '../../../models/m_projectdetails.dart';
+import '../../../models/devopsmedel.dart';
+import '../../../utils/constants.dart';
+import '../../../utils/screen_helper.dart';
 
-class ApplicationSkill extends StatelessWidget {
+class DevopsSkill extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenHelper(
@@ -29,14 +28,12 @@ class ApplicationSkill extends StatelessWidget {
           spacing: 8.0,
           runSpacing: 8.0,
           children: List.generate(
-            projectDetails.length,
-            (index) => Card(
-              child: LayoutBuilder(
-                builder: (context, constraints) {
-                  var item = projectDetails[index];
-                  return projectview(item: item, constraints: constraints);
-                },
-              ),
+            D_project.length,
+            (index) => LayoutBuilder(
+              builder: (context, constraints) {
+                var item = D_project[index];
+                return Projectview(item: item, constraints: constraints);
+              },
             ),
           ),
         ),
@@ -45,10 +42,10 @@ class ApplicationSkill extends StatelessWidget {
   }
 }
 
-class projectview extends StatelessWidget {
-  const projectview({super.key, required this.item, required this.constraints});
+class Projectview extends StatelessWidget {
+  const Projectview({super.key, required this.item, required this.constraints});
   final BoxConstraints constraints;
-  final ProjectDetails item;
+  final DevopsProject item;
 
   @override
   Widget build(BuildContext context) {
@@ -63,13 +60,14 @@ class projectview extends StatelessWidget {
             Container(
               color: Colors.white10,
               child: Image.asset(
-                item.imagename,
+                // "assets/devops/i11.png",
+                item.Image,
                 width: constraints.maxWidth > 720.0
                     ? MediaQuerypage.screenWidth! * .2
                     : MediaQuerypage.screenWidth! * .6,
-                height: constraints.maxHeight>1200?
-                MediaQuerypage.screenHeight! * .3:
-                MediaQuerypage.screenHeight! * .55,
+                height: constraints.maxHeight > 1200
+                    ? MediaQuerypage.screenHeight! * .3
+                    : MediaQuerypage.screenHeight! * .55,
               ),
             ),
             const SizedBox(
@@ -78,47 +76,21 @@ class projectview extends StatelessWidget {
             ),
             SizedBox(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    item.type,
-                    style: GoogleFonts.oswald(
-                      color: kPrimaryColor,
-                      fontWeight: FontWeight.w900,
-                      fontSize: 16.0,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 15.0,
-                  ),
-                  Text(
-                    "${item.name}\n${item.title}",
-                    style: GoogleFonts.oswald(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w900,
-                      height: 1.3,
-                      fontSize: 35.0,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10.0,
-                  ),
                   SizedBox(
                     width: constraints.maxWidth > 720.0
                         ? MediaQuerypage.screenWidth! * .7
                         : MediaQuerypage.screenWidth!,
                     child: Text(
-                      "${item.details}\n\n${item.tools}",
+                      "${item.details}\n",
                       textAlign: TextAlign.start,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.amber,
                         fontSize: 18.0,
                       ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 25.0,
                   ),
                   Row(
                     children: [
@@ -135,7 +107,7 @@ class projectview extends StatelessWidget {
                           ),
                           child: TextButton(
                             onPressed: () {
-                              js.context.callMethod('open', [item.projectlink]);
+                              js.context.callMethod('open', [item.projectLink]);
                             },
                             child: const Center(
                               child: Text(
@@ -150,9 +122,7 @@ class projectview extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        width: 10.0,
-                      ),
+                      
                     ],
                   )
                 ],

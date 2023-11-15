@@ -6,7 +6,7 @@ import 'package:portfolio/utils/screen_helper.dart';
 import '../../../media_query.dart';
 import '../../../utils/constants.dart';
 
-class ApplicationSkill extends StatelessWidget {
+class About extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenHelper(

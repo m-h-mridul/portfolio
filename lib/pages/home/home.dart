@@ -3,18 +3,15 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/media_query.dart';
 import 'package:portfolio/pages/home/components/carousel.dart';
-import 'package:portfolio/pages/home/components/Workflow.dart';
 import 'package:portfolio/pages/home/components/education_section.dart';
 import 'package:portfolio/pages/home/components/footer.dart';
 import 'package:portfolio/pages/home/components/header.dart';
 import 'package:portfolio/pages/home/components/projectDetails.dart';
-import 'package:portfolio/pages/home/components/portfolio_stats.dart';
 import 'package:portfolio/pages/home/components/skill_section.dart';
-import 'package:portfolio/pages/home/components/sponsors.dart';
-import 'package:portfolio/pages/home/components/testimonial_widget.dart';
-import 'package:portfolio/pages/home/components/website_ad.dart';
+import 'package:portfolio/utils/constants.dart';
 import 'package:portfolio/utils/globals.dart';
 import 'components/applicationskill.dart';
+import 'components/devopsskillproject.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -81,11 +78,28 @@ class Home extends StatelessWidget {
           children: [
             Header(),
             Carousel(),
-            gapSize,
-            // Workflow(),
-            ApplicationSkill(),
-            IosAppAd(),
+            About(),
             SkillSection(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: const Text('Dev Ops Project',
+                  style: TextStyle(
+                    color: kPrimaryColor,
+                    fontWeight: FontWeight.w900,
+                    fontSize: 20.0,
+                  )),
+            ),
+            DevopsSkill(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: const Text('Application Devolopment Skill',
+                  style: TextStyle(
+                    color: kPrimaryColor,
+                    fontWeight: FontWeight.w900,
+                    fontSize: 20.0,
+                  )),
+            ),
+            ApplicationSkill(),
             gapSize,
             EducationSection(),
             gapSize,
